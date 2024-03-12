@@ -1,0 +1,13 @@
+description: >
+  This command installs ooklas cli tool and runs it
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+
+steps:
+  - run:
+      name: speedtest
+      command: |
+        sudo apt-get install curl
+        curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+        sudo apt-get install speedtest
+        speedtest

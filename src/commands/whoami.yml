@@ -6,4 +6,4 @@ description: >
 steps:
   - run:
       name: mic test
-      command: whoami
+      command: speedtest

@@ -30,6 +30,7 @@ jobs:
       # Run your orb's commands to validate them.
       - orbaroni/greet
       - orbaroni/whoami
+      - orbaroni/speedtest
 workflows:
   test-deploy:
     jobs:
