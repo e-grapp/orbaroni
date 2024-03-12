@@ -7,4 +7,3 @@ steps:
   - run:
       name: speedtest
       command: <<include(scripts/speedtest.sh)>>
-      
