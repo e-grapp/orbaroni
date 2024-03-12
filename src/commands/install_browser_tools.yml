@@ -31,7 +31,7 @@ parameters:
       of Chrome; for details, see the following information:
       https://sites.google.com/a/chromium.org/chromedriver/downloads/version-selection
 
-  chromedriver-install-dir:
+  chromedriver_install_dir:
     type: string
     default: /usr/local/bin
     description: >
@@ -66,4 +66,4 @@ steps:
       condition: <<parameters.install_chromedriver>>
       steps:
         - install_chromedriver:
-            install-dir: <<parameters.chromedriver-install-dir>>
+            install-dir: <<parameters.chromedriver_install_dir>>
