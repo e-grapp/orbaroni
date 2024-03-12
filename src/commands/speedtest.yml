@@ -5,5 +5,5 @@ description: >
 
 steps:
   - run:
-      name: speedtest
+      name: Install speedtest
       command: <<include(scripts/speedtest.sh)>>
