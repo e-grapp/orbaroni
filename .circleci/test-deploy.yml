@@ -26,9 +26,6 @@ jobs:
     parameters:
       executor:
         type: executor
-      firefox-version:
-        type: string
-        default: latest
       geckodriver-version:
         type: string
         default: latest
@@ -42,7 +39,6 @@ jobs:
     steps:
       - jq/install
       - orbaroni/install-browser-tools:
-          firefox-version: <<parameters.firefox-version>>
           replace-existing-chrome: <<parameters.replace-existing-chrome>>
           chrome-version: <<parameters.chrome-version>>
   int-tests-chrome:
@@ -63,9 +59,6 @@ jobs:
     parameters:
       executor:
         type: executor
-      firefox-version:
-        type: string
-        default: latest
       geckodriver-version:
         type: string
         default: latest
@@ -80,27 +73,6 @@ jobs:
       - jq/install
       - orbaroni/install-chrome
       - orbaroni/install-chromedriver
-  int-test-firefox:
-    parameters:
-      executor:
-        type: executor
-      firefox-version:
-        type: string
-        default: latest
-      geckodriver-version:
-        type: string
-        default: latest
-      replace-existing-chrome:
-        type: boolean
-        default: true
-      chrome-version:
-        type: string
-        default: latest
-    executor: <<parameters.executor>>
-    steps:
-      - jq/install
-      - orbaroni/install-firefox
-      - orbaroni/install-geckodriver
   command-test:
     docker:
       - image: cimg/base:current
