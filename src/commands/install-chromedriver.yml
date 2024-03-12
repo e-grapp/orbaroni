@@ -1,0 +1,21 @@
+description: >
+  Install Google's ChromeDriver WebDriver proxy, for use in browser
+  testing with Chrome. A ChromeDriver version will be dynamically
+  selected based on the installed version of Chrome; for details, see
+  https://sites.google.com/a/chromium.org/chromedriver/downloads/version-selection
+  Requirements: sed, curl, unzip
+
+parameters:
+  install-dir:
+    type: string
+    default: /usr/local/bin
+    description: >
+      Directory in which to install ChromeDriver (directory selection
+      not supported on Alpine Linux)
+
+steps:
+  - run:
+      name: Install ChromeDriver
+      environment:
+        ORB_PARAM_DRIVER_INSTALL_DIR: <<parameters.install-dir>>
+      command: <<include(scripts/install-chromedriver.sh)>>
