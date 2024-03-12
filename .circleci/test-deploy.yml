@@ -29,7 +29,7 @@ jobs:
       geckodriver-version:
         type: string
         default: latest
-      replace-existing-chrome:
+      replace_existing_chrome:
         type: boolean
         default: true
       chrome-version:
@@ -39,7 +39,7 @@ jobs:
     steps:
       - jq/install
       - orbaroni/install-browser-tools:
-          replace-existing-chrome: <<parameters.replace-existing-chrome>>
+          replace_existing_chrome: <<parameters.replace_existing_chrome>>
           chrome-version: <<parameters.chrome-version>>
   int-tests-chrome:
     parameters:
@@ -62,7 +62,7 @@ jobs:
       geckodriver-version:
         type: string
         default: latest
-      replace-existing-chrome:
+      replace_existing_chrome:
         type: boolean
         default: true
       chrome-version:

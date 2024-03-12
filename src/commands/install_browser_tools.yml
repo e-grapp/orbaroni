@@ -15,7 +15,7 @@ parameters:
       installed, as Google does not maintain a public archive of previous
       releases.
 
-  replace-existing-chrome:
+  replace_existing_chrome:
     type: boolean
     default: false
     description: >
@@ -59,7 +59,7 @@ steps:
       condition: <<parameters.install_chrome>>
       steps:
         - install_chrome:
-            replace-existing: <<parameters.replace-existing-chrome>>
+            replace-existing: <<parameters.replace_existing_chrome>>
             chrome-version: <<parameters.chrome-version>>
 
   - when:

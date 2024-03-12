@@ -64,19 +64,19 @@ if uname -a | grep Darwin >/dev/null 2>&1; then
   curl -L -o "$CHROME_TEMP_DIR/googlechrome.pkg" "$CHROME_MAC_URL"
   sudo /usr/sbin/installer -pkg "$CHROME_TEMP_DIR/googlechrome.pkg" -target /
   sudo rm -rf "$CHROME_TEMP_DIR"
-  echo '#!/usr/bin/env bash' >> google-chrome-$ORB_PARAM_CHANNEL
-  if [[ $ORB_PARAM_CHANNEL == "beta" ]]; then
+  echo '#!/usr/bin/env bash' >> google-chrome-"$ORB_PARAM_CHANNEL"
+  if [[ "$ORB_PARAM_CHANNEL" == "beta" ]]; then
     xattr -rc "/Applications/Google Chrome Beta.app"
-    echo '/Applications/Google\ Chrome\ Beta.app/Contents/MacOS/Google\ Chrome\ Beta "$@"' >> google-chrome-$ORB_PARAM_CHANNEL
+    echo '/Applications/Google\ Chrome\ Beta.app/Contents/MacOS/Google\ Chrome\ Beta "$@"' >> google-chrome-"$ORB_PARAM_CHANNEL"
   else
     xattr -rc "/Applications/Google Chrome.app"
-    echo '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome "$@"' >> google-chrome-$ORB_PARAM_CHANNEL
+    echo '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome "$@"' >> google-chrome-"$ORB_PARAM_CHANNEL"
   fi
-  sudo mv google-chrome-$ORB_PARAM_CHANNEL /usr/local/bin/
-  sudo chmod +x /usr/local/bin/google-chrome-$ORB_PARAM_CHANNEL
+  sudo mv google-chrome-"$ORB_PARAM_CHANNEL" /usr/local/bin/
+  sudo chmod +x /usr/local/bin/google-chrome-"$ORB_PARAM_CHANNEL"
   # test/verify installation
-  if google-chrome-$ORB_PARAM_CHANNEL --version >/dev/null 2>&1; then
-    echo "$(google-chrome-$ORB_PARAM_CHANNEL --version)has been installed in the /Applications directory"
+  if google-chrome-"$ORB_PARAM_CHANNEL" --version >/dev/null 2>&1; then
+    echo "$(google-chrome-"$ORB_PARAM_CHANNEL" --version)has been installed in the /Applications directory"
     echo "A shortcut has also been created at $(command -v google-chrome)"
     exit 0
   else
@@ -127,19 +127,19 @@ fi
 
 # test/verify installation
 if [[ "$ORB_PARAM_CHROME_VERSION" != "latest" ]]; then
-  if google-chrome-$ORB_PARAM_CHANNEL --version | grep "$ORB_PARAM_CHROME_VERSION" >/dev/null 2>&1; then
+  if google-chrome-"$ORB_PARAM_CHANNEL" --version | grep "$ORB_PARAM_CHROME_VERSION" >/dev/null 2>&1; then
     :
   else
     echo "Google Chrome v${ORB_PARAM_CHROME_VERSION} (${ORB_PARAM_CHANNEL}) failed to install."
     exit 1
   fi
 else
-  if google-chrome-$ORB_PARAM_CHANNEL --version >/dev/null 2>&1; then
+  if google-chrome-"$ORB_PARAM_CHANNEL" --version >/dev/null 2>&1; then
     :
   else
     echo "The latest release of Google Chrome (${ORB_PARAM_CHANNEL}) failed to install."
     exit 1
   fi
-  echo "$(google-chrome-$ORB_PARAM_CHANNEL --version) has been installed to $(command -v google-chrome-$ORB_PARAM_CHANNEL)"
+  echo "$(google-chrome-"$ORB_PARAM_CHANNEL" --version) has been installed to $(command -v google-chrome-"$ORB_PARAM_CHANNEL")"
   echo "Chrome: $ORB_PARAM_CHROME_VERSION" >>"${HOME}/.browser-versions"
 fi
