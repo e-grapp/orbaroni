@@ -1,0 +1,17 @@
+description: >
+  This command cancels a workflow
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+parameters:
+  api_key:
+    type: string
+    default: CIRCLE_TOKEN
+    description: "add your token"
+steps:
+  - run:
+      environment:
+        PARAM_APIKEY: <<parameters.api_key>>
+      name: Cancel workflow
+      command: |
+            echo "Cancel workflow"
+            curl -s -H 'Accept: application/json' -X POST https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=${<< parameters.api_key >>}
