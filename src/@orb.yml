@@ -1,7 +1,7 @@
 version: 2.1
 
 description: >
-  This is an onboarding orb for testing and troubleshooting - Based off the templated "Hello World Initialized via Orb Tools" orb. 
+  This is an onboarding orb for testing and troubleshooting - Based off the templated "Hello World Initialized via Orb Tools" orb.
   This orb does not currently provide any value to an end-user and will likely never become useful :)
 
 # This information will be displayed in the orb registry and is not mandatory.
