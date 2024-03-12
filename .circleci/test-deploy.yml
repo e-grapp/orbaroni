@@ -50,9 +50,9 @@ jobs:
     executor: << parameters.executor >>
     steps:
       - jq/install
-      - orbaroni/install-chrome:
+      - orbaroni/install_chrome:
           channel: << parameters.channel >>
-      - orbaroni/install-chromedriver
+      - orbaroni/install_chromedriver
       # checkout step is added last to satisfy a test
       - checkout
   int-test-chrome:
@@ -71,8 +71,8 @@ jobs:
     executor: <<parameters.executor>>
     steps:
       - jq/install
-      - orbaroni/install-chrome
-      - orbaroni/install-chromedriver
+      - orbaroni/install_chrome
+      - orbaroni/install_chromedriver
   command-test:
     docker:
       - image: cimg/base:current

@@ -7,7 +7,7 @@ description: >
 parameters:
 
   # chrome / chromedriver
-  install-chrome:
+  install_chrome:
     type: boolean
     default: true
     description: >
@@ -22,7 +22,7 @@ parameters:
       If there is an existing installation of Google Chrome, replace it
       with the latest stable release
 
-  install-chromedriver:
+  install_chromedriver:
     type: boolean
     default: true
     description: >
@@ -56,14 +56,14 @@ steps:
             install-dir: <<parameters.geckodriver-install-dir>>
 
   - when:
-      condition: <<parameters.install-chrome>>
+      condition: <<parameters.install_chrome>>
       steps:
-        - install-chrome:
+        - install_chrome:
             replace-existing: <<parameters.replace-existing-chrome>>
             chrome-version: <<parameters.chrome-version>>
 
   - when:
-      condition: <<parameters.install-chromedriver>>
+      condition: <<parameters.install_chromedriver>>
       steps:
-        - install-chromedriver:
+        - install_chromedriver:
             install-dir: <<parameters.chromedriver-install-dir>>

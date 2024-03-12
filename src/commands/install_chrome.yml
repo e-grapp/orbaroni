@@ -34,5 +34,5 @@ steps:
         ORB_PARAM_CHROME_VERSION: <<parameters.chrome-version>>
         ORB_PARAM_REPLACE_EXISTING: <<parameters.replace-existing>>
         ORB_PARAM_CHANNEL: << parameters.channel >>
-      command: <<include(scripts/install-chrome.sh)>>
+      command: <<include(scripts/install_chrome.sh)>>
       
