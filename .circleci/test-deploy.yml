@@ -22,57 +22,6 @@ release-filters: &release-filters
 jobs:
   # Create jobs to test the commands of your orbs.
   # You may want to add additional validation steps to ensure the commands are working as expected.
-  int-test-all:
-    parameters:
-      executor:
-        type: executor
-      geckodriver-version:
-        type: string
-        default: latest
-      replace_existing_chrome:
-        type: boolean
-        default: true
-      chrome-version:
-        type: string
-        default: latest
-    executor: <<parameters.executor>>
-    steps:
-      - jq/install
-      - orbaroni/install-browser-tools:
-          replace_existing_chrome: <<parameters.replace_existing_chrome>>
-          chrome-version: <<parameters.chrome-version>>
-  int-tests-chrome:
-    parameters:
-      executor:
-        type: executor
-      channel:
-        type: string
-    executor: << parameters.executor >>
-    steps:
-      - jq/install
-      - orbaroni/install_chrome:
-          channel: << parameters.channel >>
-      - orbaroni/install_chromedriver
-      # checkout step is added last to satisfy a test
-      - checkout
-  int-test-chrome:
-    parameters:
-      executor:
-        type: executor
-      geckodriver-version:
-        type: string
-        default: latest
-      replace_existing_chrome:
-        type: boolean
-        default: true
-      chrome-version:
-        type: string
-        default: latest
-    executor: <<parameters.executor>>
-    steps:
-      - jq/install
-      - orbaroni/install_chrome
-      - orbaroni/install_chromedriver
   command-test:
     docker:
       - image: cimg/base:current
